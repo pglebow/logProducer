@@ -3,6 +3,8 @@
  */
 package com.glebow.logProducer.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalculationService {
 
+	private static final Logger logger = LoggerFactory.getLogger(CalculationService.class);
+	
 	/**
 	 * Default
 	 */
@@ -25,7 +29,11 @@ public class CalculationService {
 	 * @return
 	 */
 	public int getNthFibonacci(int n) {
-		return fib(n);
+		int retVal= n;
+		logger.info("Requesting the " + n + "th Fibonacci number...");
+		retVal = fib(n);
+		logger.info("The " + n + "th Fibonacci number is " + retVal);
+		return retVal;
 	}
 
 	/**
